@@ -18,3 +18,4 @@ func update_camera():
 	get_viewport().set_canvas_transform(canvas_transform)
 
 	return player_offset
+	
