@@ -7,6 +7,7 @@ const MAX_SPEED = 20000
 
 
 enum Direction {TOP, RIGHT, DOWN, LEFT}
+signal move
 
 func _ready():
 	pass
@@ -29,6 +30,8 @@ func _physics_process(delta):
 	
 	velocity = speed * direction * delta
 	move_and_slide(velocity)
+	if is_moving:
+		emit_signal("move")
 
 
 func turn_towards(_direction):
