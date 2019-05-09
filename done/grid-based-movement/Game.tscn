@@ -15,7 +15,8 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Player" type="KinematicBody2D" parent="Grid"]
-position = Vector2( 375.675, 264.638 )
+editor/display_folded = true
+position = Vector2( 473.076, 40.6158 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true

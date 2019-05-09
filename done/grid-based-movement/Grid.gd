@@ -23,19 +23,29 @@ func _ready():
 		if not grid_position in positions:
 			positions.append(grid_position)
 	
-			for position in positions:
-				var new_obstacle = Obstacle.instance()
-				new_obstacle.set_position(map_to_world(position) + half_tile_size)
-				grid[position.x][position.y] = ENTITY_TYPES.OBSTACLE
-				add_child(new_obstacle)
+	for position in positions:
+		var new_obstacle = Obstacle.instance()
+		new_obstacle.set_position(map_to_world(position) + half_tile_size)
+		grid[position.x][position.y] = ENTITY_TYPES.OBSTACLE
+		add_child(new_obstacle)
 
 
-func is_cell_vacant():
-	# Return true if the cell is vacant, else false
-	pass
+func is_cell_vacant(position, direction):
+	var grid_position = world_to_map(position) + direction
+
+	if grid_position.x < grid_size.x and grid_position.x >= 0:
+		if grid_position.y < grid_size.y and grid_position.y >= 0:
+			return grid[grid_position.x][grid_position.y] == null
+	return false
 
 
-func update_child_pos(child, new_pos, direction):
-	# Move a child to a new position in the grid Array
-	# Returns the new target world position of the child
-	pass
+func update_child_position(child):
+	var grid_position = world_to_map(child.get_position())
+	print(grid_position)
+	grid[grid_position.x][grid_position.y] = null
+
+	var new_grid_position = grid_position + child.direction
+	grid[new_grid_position.x][new_grid_position.y] = child.type
+
+	var target_position = map_to_world(new_grid_position) + half_tile_size
+	return target_position

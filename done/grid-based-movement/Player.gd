@@ -7,13 +7,17 @@ const RIGHT = Vector2(1, 0)
 const DOWN = Vector2(0, 1)
 const LEFT = Vector2(-1, 0)
 
+var type
+var grid
+
 var speed = 0
 const MAX_SPEED = 25000
 
 var velocity = Vector2()
 
 func _ready():
-	pass
+	grid = get_parent()
+	type = grid.ENTITY_TYPES.PLAYER
 
 
 func _physics_process(delta):
@@ -34,7 +38,10 @@ func _physics_process(delta):
 	else:
 		speed = 0
 	
-	velocity = speed * direction.normalized() * delta
-	
-	move_and_slide(velocity)
+		var target_postition = grid.update_child_position(self)
+		print(["target position:", target_postition])
+		set_position(target_postition)
+
+	# velocity = speed * direction.normalized() * delta
+	# move_and_slide(velocity)
 	
