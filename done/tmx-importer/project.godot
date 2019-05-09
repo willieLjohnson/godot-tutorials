@@ -1,0 +1,45 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="TMX Importer"
+config/icon="res://icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "vnen.tiled_importer" )
+
+[importer_defaults]
+
+vnen.tiled_importer={
+"add_background": true,
+"collision_layer": 1,
+"custom_properties": true,
+"embed_internal_images": false,
+"image_flags": 7,
+"post_import_script": "",
+"save_tiled_properties": false,
+"tile_metadata": false,
+"uv_clip": true
+}
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
+
+[tiled_importer]
+
+enable_json_format=true
