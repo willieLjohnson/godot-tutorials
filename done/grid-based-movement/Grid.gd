@@ -17,6 +17,9 @@ func _ready():
 		for y in range(grid_size.y):
 			grid[x].append(null)
 
+	var start_position = update_child_position($Player)
+	$Player.set_position(start_position)
+
 	var positions = []
 	for n in range(5):
 		var grid_position = Vector2(randi() % int(grid_size.x), randi() % int(grid_size.y))
